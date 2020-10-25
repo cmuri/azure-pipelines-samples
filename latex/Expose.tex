@@ -1,0 +1,301 @@
+%------------------------------------------------------------------------------
+%############################## Masterarbeit ################################
+%------------------------------------------------------------------------------
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}  
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}           
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage{geometry}
+ \usepackage{fancyhdr}
+ \usepackage{pdfpages}
+ \usepackage{floatflt}
+ \usepackage{textcomp}
+ \usepackage{rotating}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{courier}
+\usepackage[outdir=./]{epstopdf}
+\usepackage{todonotes}
+
+
+ \pagestyle{empty}
+\usepackage{setspace} %zeilenabstand
+
+
+ \parindent=0pt %keine Einrückung bei Absätzen
+ \setlength{\parskip}{1em}
+
+
+%-------------------------------------------------------Tabellenzelle vertikal
+\newcolumntype{C}[1]{>{\centering\arraybackslash} m{#1}}
+
+%-----------------------------------------------------------------Zeilenabstand
+
+
+%---------------------------------------------------------- Literaturverzeichnis
+\usepackage[style=alphabetic,backend=bibtex]{biblatex}
+\usepackage[flushmargin,hang,bottom]{footmisc}
+ \bibliography{muriQuellen}
+ 
+ \AtBeginBibliography{% % Autor und Jahr werden im Literaturverzeichnis fett geschrieben
+   \renewcommand*\mkbibnamefirst[1]{\bfseries{#1}}
+   \renewcommand*\mkbibnamelast[1]{\bfseries{#1}}
+   \renewcommand*\mkbibnameprefix[1]{\bfseries{#1}}
+   \renewcommand*\mkbibnameaffix[1]{\bfseries{#1}}
+ }
+
+
+
+%------------------------------------------------------- Seitenränder einstellen
+\geometry{a4paper,left=4cm,right=2cm, top=3cm, bottom=4cm}
+
+%---------------------------------------- Verändert größe der Bildunterschriften
+\usepackage[small, bf, format=hang]{caption}
+\usepackage[babel,german=guillemets]{csquotes}
+
+\renewcommand{\captionfont}{\sffamily \small}
+\DeclareCaptionFont{black}{\color{black}}
+\captionsetup[figure]{labelfont={black,bf}} %,textfont=it}
+\captionsetup[table]{labelfont={black,bf}} %,textfont=it}
+\captionsetup[lstlistings]{labelfont={black,bf}} %,textfont=it}
+
+
+
+%------------------------------------------------- Fußnotepaket und formatierung
+%alles Fußnoten an seitenende
+\usepackage[flushmargin,hang,bottom]{footmisc}
+ % Fußnoten abstand zum Text
+% \setlength{\skip\footins}{1 cm}
+ 
+%------------------- 1,5 facher Zeilensabstand und Fußnoten getrennt mit abstand
+	\linespread{1.5}
+	\footnotesep\baselineskip
+
+%-------------------------------------------Quellcode einbinden und formatieren
+\usepackage{listings} \lstset{numbers=left, basicstyle = \tiny , numberstyle=\tiny, numbersep=5pt, breaklines=true %automatische Zeilenumbrüche
+, breakatwhitespace=false} 
+
+\lstset{
+basicstyle=\small \ttfamily, % print whole listing small
+keywordstyle=\color{black}\bfseries,
+% underlined bold black keywords
+identifierstyle=, % nothing happens
+commentstyle=\color{black}, % white comments
+%stringstyle=\ttfamily, % typewriter type for strings
+showstringspaces=false,
+   flexiblecolumns=false,
+   tabsize=2,
+   numbers=none,
+   numberstyle=\tiny,
+   numberblanklines=false,
+   stepnumber=1,
+   numbersep=10pt,
+   xleftmargin=15pt} % no special string spaces
+
+
+%-------------------------------------------------------------------Bibliography
+%\bibliography{literatur}
+%\AtBeginBibliography{\renewcommand\mkbibnamelast[1]{\textbf{#1}}} 
+%Nachname des Autor fett gedruckt
+%}
+
+%----------------------------------------------------- Fußnoten abstand zum Text
+ \setlength{\skip\footins}{0,4cm}
+
+%------------------------ Einzug der umgebrochenen Zeile im Literaturverzeihnis
+ \setlength{\bibhang}{1cm}
+ \setlength{\bibparsep}{12pt}
+
+%------------------------------------------------------formatieren von Umbrüchen
+\clubpenalty 	= 10000  % schliesst Schusterjungen aus
+\widowpenalty 	= 10000  % schliesst Hurenkinder aus
+\brokenpenalty = 10000  % Verhindert Silbentrennung bei Seitenumbruch
+
+%\displaywidowpenalty = 10000 
+
+%----- Anpassung von Booklet, damit das Datum des letzten Aufrufs angezeigt wird
+\DeclareBibliographyDriver{BOOKLET}{%
+\printnames{author}%
+\newunit\newblock
+\printfield{title}%
+\newunit\newblock
+\printlist{publisher}%
+\newunit
+\printlist{location}%
+\newunit
+\printfield{year}%
+\newunit
+\printfield{urldate}%
+\finentry}
+
+
+%----------------------------------Kopf und Fu�zeile f�r Inhaltsverzeichnises 
+  \pagestyle{fancy}
+  \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+  \renewcommand{\subsectionmark}[1]{\markright{#1}{}}
+  \fancyhf{}
+  \fancyhead[L]{}%Kopfzeile links bzw. innen
+  \fancyhead[C]{}%Kopfzeile rechts bzw. au�en
+  \fancyhead[R]{\sffamily \rightmark} %Bachelor-Thesis}%Kopfzeile rechts bzw. au�en
+  % erstellt eine diagonae linie unter der Kopfzeiel
+  \renewcommand{\headrulewidth}{0.0pt}%Linie oben
+  \fancyfoot[L]{}%Fu�zeile links bzw. innen
+  \fancyfoot[C]{}
+  \fancyfoot[R]{}%Fu�zeile rechts bzw. au�en
+  % erstellt eine diagonae linie �ber der Fu�zeile
+  \renewcommand{\footrulewidth}{0.0pt}%Linie unten
+
+%-------------------------------------------------- Formatieren der Aufz�hlungen
+\renewcommand{\labelenumi}{\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+%-------------------------------------------------------------------------------
+
+
+%--------------------------------------------- Countermakro f�r R�mische Zeichen
+
+
+\newcounter{roem}
+\newcounter{tmp} 
+\stepcounter{roem}
+\newcommand{\beginRoman}[1]{
+\setcounter{tmp}{\value{page}} 
+\setcounter{page}{\value{#1}}
+\renewcommand{\thepage}{\Roman{page}}}
+
+\newcommand{\RomanEnd}{\clearpage
+\setcounter{roem}{\value{page}}
+\setcounter{page}{\value{tmp}}
+\renewcommand{\thepage}{\arabic{page}}
+}
+
+
+%-------------------------------------------------------------------------------
+
+%------------------------------------------------------------ Hilfbefehle
+\newcommand{\para}{\parindent 0pt \parskip 12pt} %Absatzeinr�ckung vermeiden
+\newcommand{\Zitat}[2]{\begin{quote}\textit{\glqq #1\grqq} #2\end{quote}}
+%-------------------------------------------------------------------------------
+
+%------------------------------------------------- Sections Serifenlos und farbe
+
+\usepackage[sf,sl,outermarks,noindentafter]{titlesec}
+
+%
+%k�nnte alles auch mit \bfseries versehen werden nach Geschmack
+%
+\titleformat{\section}[hang]{\color{black}\huge\sffamily}{\thetitle}{11pt}{}
+\titleformat{\subsection}[hang]{\color{black} \Large\sffamily}{\thetitle}{11pt}{}
+\titleformat{\subsubsection}[hang]{\color{black}\large\sffamily}{\thetitle}{11pt}{}
+\titleformat{\paragraph}[hang]{\bfseries\sffamily}{\thetitle}{11pt}{}
+
+%Abst�nde
+\titlespacing{\section}{0pt}{\baselineskip}{0pt}
+\titlespacing{\subsection}{0pt}{\baselineskip}{0pt}
+\titlespacing{\subsubsection}{0pt}{\baselineskip}{0pt}
+\titlespacing{\paragraph}{0pt}{\baselineskip}{0pt}
+
+
+
+%Inhaltsverzeichnis
+\usepackage[titles]{tocloft}
+
+%\setlength{\cftbeforechapskip}{2ex}
+%\setlength{\cftbeforesecskip}{0.8ex}
+%\setlength{\cftbeforesubsecskip}{0.8ex}
+
+%\renewcommand{\cftchapfont}{\sffamily\bfseries}
+%\renewcommand{\cftchappagefont}{\sffamily}
+\renewcommand{\cftsecfont}{\color{black}\bfseries \sffamily}
+\renewcommand{\cftsecpagefont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsecpagefont}{\sffamily}
+\renewcommand{\cftsubsubsecfont}{\sffamily}
+\renewcommand{\cftsubsubsecpagefont}{\sffamily}
+
+
+%----------------------------------------------------------- Tabellenrahmenfarbe
+\setlength\arrayrulewidth{0.1pt}\arrayrulecolor{black}
+%-------------------------------------------------------------------------------
+
+
+%----------------------------------------------- Absatz�berschriften formatieren
+\let\tmpParagraph\paragraph
+\renewcommand{\paragraph}[1]{\tmpParagraph{\normalfont \sffamily \large \color{black} #1}}
+
+%-------------------------------------------------------------------------------
+%Abstaände Section und Text
+\titlespacing{\section}{0mm}{10mm}{5mm}[0mm]
+
+%Section auf neue Seite
+% \newcommand{\sectionbreak}{\clearpage}
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}
+
+
+\begin{document}
+
+\singlespacing %Zeilenabstand
+
+% \include{Thesis}
+% \setcounter{page}{1}
+% %\include{abstract}
+% \input{problemstellung}
+% \input{gliederung}
+% \input{zeitplan}
+% \input{risikoanalyse}
+
+%\input{ziel}
+%\input{abgrenzung}
+%\input{aktuellerStandForschung}
+
+
+%\input{relevanzFragestellung}
+%\input{theobezug}
+%\input{methodenUndQuellen}
+
+
+\newpage
+
+\fancyhead[LO,RE]{\sffamily \leftmark} 
+\fancyhead[R]{\sffamily}
+\beginRoman{roem}
+%\addcontentsline{toc}{section}{Tabellenverzeichnis}
+%\listoftables
+
+%\newpage
+%\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\listoffigures
+
+%\newpage
+%\addcontentsline{toc}{section}{Listings}
+%\lstlistoflistings
+
+\newpage
+\addcontentsline{toc}{section}{Literatur}
+\printbibliography[notkeyword=quelle]
+
+\clearpage
+
+
+%\include{anhang}
+
+\include{appendix}
+\RomanEnd
+%TODOS
+%\listoftodos
+
+\end{document}
+
+
+
+
