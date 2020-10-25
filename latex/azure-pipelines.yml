@@ -11,15 +11,12 @@ pool:
             sudo apt-get install texlive-bibtex-extra
             sudo apt-get install texlive-font-utils
             sudo wget http://mirrors.ctan.org/macros/latex/contrib/titlesec/titlesec.sty -O /usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
-            cd Expose
             pdflatex -synctex=1 -interaction=nonstopmode  -halt-on-error Expose.tex 
             bibtex Expose
             pdflatex -synctex=1 -interaction=nonstopmode -halt-on-error Expose.tex 
             pdflatex -synctex=1 -interaction=nonstopmode -halt-on-error Expose.tex
             pdflatex -synctex=1 -interaction=nonstopmode -halt-on-error Expose.tex
-            cd ..
-            cp Expose/Expose.pdf CompiledPdfs/
-            git add CompiledPdfs/Expose.pdf
+            git add Expose.pdf
             git commit -m "LaTex Compiled2Pdf with Azure-Pipelines"
             git push origin HEAD:master
     displayName: 'Latex'
